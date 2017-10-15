@@ -44,8 +44,11 @@ func NewCLI(conf *Config) (*CLI, error) {
 	if conf.Origin != "" {
 		origin = conf.Origin
 	}
-	conn, err := websocket.Dial(conf.URL, "", origin)
+	fmt.Println("urlは", conf.URL)
+	conn, err := websocket.Dial(conf.URL, "", origin) // TODO ここで詰まってる
+	fmt.Println("その後")
 	if err != nil {
+		fmt.Println("エラー")
 		return nil, err
 	}
 	template := EmptyTemplate
